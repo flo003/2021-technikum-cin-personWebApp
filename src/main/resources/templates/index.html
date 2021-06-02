@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person App</title>
+</head>
+<body>
+<form th:action="@{/}">
+    <input th:if="${ !#ctx.containsVariable('all') }" type="hidden" name="all" value="true">
+    <button>[[${all} ? 'nur aktivierte' : 'alle']] Personen anzeigen</button>
+</form>
+<h1>Personen</h1>
+<ul>
+    <li th:each="person: ${personList}">
+        [[ ${person.name} ]]
+    </li>
+</ul>
+</body>
+</html>
