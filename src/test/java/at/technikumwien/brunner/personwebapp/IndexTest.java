@@ -4,9 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,13 +32,13 @@ public class IndexTest {
 
     @BeforeAll
     public static void setupBeforeClass(){
-        WebDriverManager.chromedriver().setup();
-        System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+        WebDriverManager.firefoxdriver().setup();
+        // System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
     }
 
     @BeforeEach
     public void setup(){
-        webDriver = new ChromeDriver( new ChromeOptions()
+        webDriver = new FirefoxDriver( new FirefoxOptions()
                 .setHeadless(true) // browser without GUI
         );
         webDriver.manage().timeouts() .implicitlyWait(3, TimeUnit.SECONDS);
