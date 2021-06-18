@@ -1,0 +1,6 @@
+src
+target
+!target/PersonApp.jar
+pom.xml
+Jenkinsfile
+sonar-project.properties
