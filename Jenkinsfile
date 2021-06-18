@@ -33,7 +33,18 @@ pipeline {
 				bat "mvn verify -DskipUnitTests"
 			}
 		}
+        stage("Deliver") {
+            steps {
+                script {
+                    /* NOTE: if Windows is used as operating system, remove <DOCKER-HOME>\bin\docker (i.e. file without extension) as workaround */
 
+                    withDockerRegistry(toolName: "Docker 20", credentialsId: "docker_access") {   /* may need to be adapted */
+                        def image = docker.build("flo003/personwebapp", "--no-cache .")
+                        image.push()
+                    }
+                }
+            }
+        }
 		stage("Analyze") {
 			steps {
 				script {
